@@ -1,1 +1,1 @@
-bunyod
+bunyod mirzaev
