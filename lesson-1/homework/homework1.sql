@@ -1,76 +1,53 @@
-Easy
-1. (Data)Ma’lumot — bu raqamlar, matnlar, suratlar yoki tovush kabi xom (ishlanmagan) fakt va raqamlar bo‘lib, ularni tahlil qilish yoki qayta ishlash mumkin. 
-(Database)Ma’lumotlar bazasi — bu ma’lumotlarni saqlash va boshqarish uchun mo‘ljallangan tizimli va elektron shakldagi ombor.U orqali ma’lumotlarni oson qidirish, kiritish va tahrirlash mumkin.
-(Relational Database)Relatsion ma’lumotlar bazasi — bu ma’lumotlarni jadval (table) ko‘rinishida saqlaydigan va ular orasidagi bog‘lanishlarni (relatsiyalarni) qo‘llab-quvvatlaydigan ma’lumotlar bazasi. Bu turdagi bazalarda asosan SQL tili ishlatiladi.
-(Table)Jadval — bu ma’lumotlar bazasidagi asosiy tuzilma bo‘lib, qatorlar (row) va ustunlar (column) shaklida tashkil etiladi. Har bir qator — bitta yozuv (record), har bir ustun esa — ma’lumot turi (masalan, ism, yosh) ni bildiradi.
+1. Define the following terms:
+Data: Raw facts or figures without context, e.g., numbers, text, dates. Example: "John", "25", "New York".
+Database: A structured collection of data stored electronically. It allows easy access, management, and updating of data.
+Relational Database: A type of database that stores data in tables (relations) with rows and columns, and relationships between the tables are maintained using keys.
+Table: A collection of related data organized in rows and columns. Each row is a record, and each column is a field (attribute).
+2. List five key features of SQL Server:
+Data Security – Supports authentication, encryption, and permissions.
+Backup and Restore – Provides robust options for backing up and restoring databases.
+High Availability – Features like Always On, failover clustering, and replication.
+Integration Services (SSIS) – For ETL (Extract, Transform, Load) operations.
+Advanced Query Optimizer – Improves performance by optimizing SQL queries.
+3. Authentication Modes in SQL Server:
+Windows Authentication – Uses the Windows credentials of the user.
+SQL Server Authentication – Uses a defined username and password stored in SQL Server.
 
-2. List five key features of SQL Server.
-(High Availability & Disaster Recovery)
-(Security)
-(Advanced Querying)
-(Business Intelligence)
-(Performance & Scalability)
-
-3.What are the different authentication modes available when connecting to SQL Server? (Give at least 2)
-Windows autentifikatsiyasi
-SQL Server autentifikatsiyasi
-
-Medium
-1. Create database SchoolDB
-go
-2. USE SchoolDB;
+CREATE DATABASE SchoolDB;
 GO
+USE SchoolDB;
+GO
+
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(50),
     Age INT
 );
-GO
-3. 
-SQL Server - Bu ma’lumotlar bazasi dvigateli (yoki serveri) hisoblanadi — u ma’lumotlarni saqlash va boshqarish uchun mo‘ljallangan dasturiy tizimdir. SQL Server so‘rovlarni bajaradi, xavfsizlikni ta’minlaydi va turli ma’lumotlar operatsiyalarini amalga oshiradi.
-SSMS - SQL Server Management Studio degan so‘zlarning qisqartmasi. Bu grafik interfeysga ega boshqaruv vositasi bo‘lib, foydalanuvchilarga SQL Server bilan oson ishlash (so‘rov yozish, ma’lumotlar bazasini yaratish, o‘chirish, tahrirlash) imkonini beradi.
-SQL -	Structured Query Language (tuzilgan so‘rovlar tili) degan so‘zlarning qisqartmasi. Bu ma’lumotlar bazasi bilan ishlash uchun yoziladigan til bo‘lib, uning yordamida ma’lumotlar bazasini yaratish, ma’lumot qo‘shish, o‘chirish, yangilash va qidirish mumkin. 
 
-Hard
-1.DQL	Data Query Language	Ma’lumotni so‘rash	SELECT
-DML	Data Manipulation Language	Ma’lumotni qo‘shish, o‘chirish, yangilash	INSERT, UPDATE, DELETE
-DDL	Data Definition Language	Tuzilmani yaratish yoki o‘zgartirish	CREATE, ALTER, DROP, TRUNCATE
-DCL	Data Control Language	Ruxsat berish yoki olib tashlash	GRANT, REVOKE
-TCL	Transaction Control Language	Tranzaksiyalarni boshqarish	BEGIN, COMMIT, ROLLBACK
-  CREATE TABLE Students (
-    StudentID INT PRIMARY KEY,
-    Name VARCHAR(50),
-    Age INT
-);
-GO
+Differences between SQL Server, SSMS, and SQL:
+Tool	Description
+SQL Server	A relational database management system (RDBMS) by Microsoft used to store and manage databases.
+SSMS (SQL Server Management Studio)	A graphical user interface (GUI) tool to interact with SQL Server. Used to write queries, manage databases, and configure settings.
+SQL (Structured Query Language)	A standard programming language used to manage and query data in relational databases.
 
-Select * from Students
-INSERT INTO Students (StudentID, Name, Age) VALUES (1, 'SAMIR', 30);
-UPDATE Students SET Age = 21 WHERE StudentID = 1;
-DELETE FROM Students WHERE StudentID = 1;
-CREATE TABLE Courses (
-    CourseID INT PRIMARY KEY,
-    CourseName VARCHAR(50)
-);
-ALTER TABLE Students ADD Email VARCHAR(100);
-DROP TABLE Courses;
-GRANT SELECT ON Students TO User1;
-REVOKE SELECT ON Students FROM User1;
-2.
-INSERT INTO Students (StudentID, Name, Age)
-VALUES
-(1, 'SARA', 23),
-(2, 'JOHN', 22),
-(3, 'JACK', 19);
-SELECT * FROM Students;
-USE SchoolDB;
-GO
-INSERT INTO Students (StudentID, Name, Age)
-VALUES
-(1, 'SARA', 23),
-(2, 'JOHN', 22),
-(3, 'JACK', 19);
-SELECT * FROM Students;
+SQL Command Categories:
+Type	Description	Example
+DQL (Data Query Language)	Used to fetch/query data from the database.	SELECT * FROM Students;
+DML (Data Manipulation Language)	Used to manipulate data in tables.	INSERT, UPDATE, DELETE
+DDL (Data Definition Language)	Defines or alters structure of tables, databases, etc.	CREATE, ALTER, DROP
+DCL (Data Control Language)	Controls access to data.	GRANT, REVOKE
+TCL (Transaction Control Language)	ManINSERT INTO Students (StudentID, Name, Age)
 
+VALUES 
+(1, 'John Doe', 20),
+(2, 'Jane Smith', 22),
+(3, 'Michael Lee', 19);
+ages transactions.	COMMIT, ROLLBACK, SAVEPOINT
+
+RESTORE DATABASE AdventureWorksDW2022
+FROM DISK = 'C:\YourBackupPath\AdventureWorksDW2022.bak'
+WITH MOVE 'AdventureWorksDW2022_Data' TO 'C:\YourDataPath\AdventureWorksDW2022.mdf',
+     MOVE 'AdventureWorksDW2022_Log' TO 'C:\YourLogPath\AdventureWorksDW2022.ldf',
+     REPLACE;
 
 
